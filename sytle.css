@@ -1,0 +1,28 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+input {
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #2e7d32;
+}
+
+form button {
+    margin-top: 10px;
+}
+
+a {
+    color: #2e7d32;
+    text-decoration: none;
+    font-weight: bold;
+}

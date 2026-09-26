@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AgroGuard AI - Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🌱 AgroGuard AI</h1>
+
+        <h2>Farmer Dashboard</h2>
+
+        <p id="welcome"></p>
+
+        <hr>
+
+        <h3>👨‍🌾 Farmer Information</h3>
+
+        <p>
+            <b>Name:</b>
+            <span id="farmerName">Loading...</span>
+        </p>
+
+        <p>
+            <b>Email:</b>
+            <span id="farmerEmail">Loading...</span>
+        </p>
+
+        <p>
+            <b>Mobile:</b>
+            <span id="farmerMobile">Loading...</span>
+        </p>
+
+        <p>
+            <b>Main Crop:</b>
+            <span id="farmerCrop">Not specified</span>
+        </p>
+
+        <hr>
+
+        <h3>🌾 AgroGuard Services</h3>
+
+        <button onclick="openScanner()">
+            🔍 Scan Crop
+        </button>
+
+        <button onclick="viewHistory()">
+            📋 Scan History
+        </button>
+
+        <br><br>
+
+        <button onclick="logout()">
+            🚪 Logout
+        </button>
+
+    </div>
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

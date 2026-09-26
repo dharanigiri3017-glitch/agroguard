@@ -1,0 +1,135 @@
+from flask import Flask, jsonify
+from flask_cors import CORS
+
+# ==========================================================
+# IMPORT ROUTES
+# ==========================================================
+
+from routes.auth import auth
+from routes.prediction import prediction
+
+
+# ==========================================================
+# CREATE FLASK APP
+# ==========================================================
+
+app = Flask(__name__)
+
+
+# ==========================================================
+# ENABLE CORS
+# ==========================================================
+
+CORS(app)
+
+
+# ==========================================================
+# REGISTER BLUEPRINTS
+# ==========================================================
+
+# Authentication:
+# /api/auth/register
+# /api/auth/login
+
+app.register_blueprint(
+    auth,
+    url_prefix="/api/auth"
+)
+
+
+# Prediction:
+# /api/prediction/predict
+# /api/prediction/history/<farmer_id>
+
+app.register_blueprint(
+    prediction,
+    url_prefix="/api/prediction"
+)
+
+
+# ==========================================================
+# HOME / SERVER STATUS
+# ==========================================================
+
+@app.route("/")
+def home():
+
+    return jsonify({
+        "status": "success",
+        "message": "AgroGuard AI backend is running!",
+        "services": {
+            "authentication":
+                "/api/auth",
+
+            "prediction":
+                "/api/prediction/predict",
+
+            "history":
+                "/api/prediction/history/<farmer_id>"
+        }
+    })
+
+
+# ==========================================================
+# HEALTH CHECK
+# ==========================================================
+
+@app.route("/health")
+def health():
+
+    return jsonify({
+        "status": "healthy",
+        "message": "AgroGuard AI server is working"
+    })
+
+
+# ==========================================================
+# ERROR HANDLER
+# ==========================================================
+
+@app.errorhandler(404)
+def page_not_found(error):
+
+    return jsonify({
+        "status": "error",
+        "message": "API endpoint not found"
+    }), 404
+
+
+@app.errorhandler(500)
+def internal_server_error(error):
+
+    return jsonify({
+        "status": "error",
+        "message": "Internal server error"
+    }), 500
+
+
+# ==========================================================
+# START SERVER
+# ==========================================================
+
+if __name__ == "__main__":
+
+    print("")
+    print("==========================================")
+    print("        AgroGuard AI Backend")
+    print("==========================================")
+    print("")
+    print("Server starting...")
+    print("")
+    print("Home      : http://127.0.0.1:5000/")
+    print("Health    : http://127.0.0.1:5000/health")
+    print("Register  : /api/auth/register")
+    print("Login     : /api/auth/login")
+    print("Prediction: /api/prediction/predict")
+    print("History   : /api/prediction/history/<farmer_id>")
+    print("")
+    print("==========================================")
+    print("")
+
+    app.run(
+        host="127.0.0.1",
+        port=5000,
+        debug=True
+    )

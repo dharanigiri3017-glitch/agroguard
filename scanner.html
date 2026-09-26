@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AgroGuard AI - Crop Scanner</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🌱 AgroGuard AI</h1>
+
+        <h2>🔍 Crop Health Scanner</h2>
+
+        <p>
+            Upload a clear image of your crop or leaf
+            to detect possible diseases or pests.
+        </p>
+
+        <form id="scanForm">
+
+            <input
+                type="file"
+                id="cropImage"
+                accept="image/*"
+                required
+            >
+
+            <br><br>
+
+            <img
+                id="imagePreview"
+                style="display:none; max-width:300px; border-radius:15px;"
+                alt="Crop Preview"
+            >
+
+            <br><br>
+
+            <button type="submit">
+                🔬 Analyze Crop
+            </button>
+
+        </form>
+
+        <p id="scanMessage"></p>
+
+        <br>
+
+        <button onclick="goDashboard()">
+            ← Back to Dashboard
+        </button>
+
+    </div>
+
+    <script src="js/scanner.js"></script>
+
+</body>
+
+</html>
